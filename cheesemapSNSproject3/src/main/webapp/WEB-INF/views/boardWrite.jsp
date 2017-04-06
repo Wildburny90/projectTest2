@@ -1,3 +1,4 @@
+<%--suppress CssInvalidPropertyValue --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -56,6 +57,13 @@
         var boa_video_originalfile = '';
         var boa_video_savefile = '';
 
+        function cancel() {
+            $('.write-slider').animate({
+                "margin-right": '-=600'
+            });
+        }
+
+
         function saveContent() {
 
             var boa_content = $('#myEditor').val();
@@ -108,6 +116,7 @@
 <textarea name="editor_content" id="myEditor"></textarea>
 <textarea name="hashtag" id="hashtag"></textarea>
 <input type="button" id="save" value="save" onclick="saveContent()">
+<input type="button" id="cancel" value="cancel" onclick="cancel()">
 <div id="location"></div>
 <!-- Include external JS libs. -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.js"></script>

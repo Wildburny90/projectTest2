@@ -111,6 +111,11 @@
 		<div id="write-button" data-flag="false">
             <img src="./resources/img/pencil.png"/>
 		</div>
+		<!-- 장바구니 버튼-->
+        <div id="divView"></div>
+		<div id="basket">
+			<img src="./resources/img/cart.png" style="height: 50px; width: auto"/>
+		</div>
 
 		<!-- search -->
 		<div class="row">

@@ -21,6 +21,17 @@ public class BoardController {
     private BoardDAO dao;
 
     @ResponseBody
+    @RequestMapping(value = "insertBasket", method = RequestMethod.POST)
+    public int insertBasket(String mem_id, String boa_latitude, String boa_longitude){
+        System.out.println(mem_id);
+        System.out.println(boa_latitude);
+        System.out.println(boa_longitude);
+        int result = 0;
+        return result;
+    }
+
+
+    @ResponseBody
     @RequestMapping(value = "boardSave", method = RequestMethod.POST)
     public int boardSave(Board board, HttpSession session, String tag_name) {
         String mem_id = (String) session.getAttribute("mem_id");

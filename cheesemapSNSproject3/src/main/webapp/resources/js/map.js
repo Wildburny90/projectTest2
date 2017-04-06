@@ -59,7 +59,7 @@ function initMap() {
         //각 장소(place객체)에 대해 아이콘, 이름, 위치정보 받아옴
         var bounds = new google.maps.LatLngBounds();
 
-        // 각 장소에 대한 마커 생성
+        // 각 검색된 장소에 대한 마커 생성
         places.forEach(function (place) {
             var hide_flag = 0;
             var called = 0;
@@ -87,6 +87,7 @@ function initMap() {
                 var longitude = event.latLng.lng();
                 var latlng = {lat: latitude, lng: longitude};
 
+                // 마커가 방방 뜀 ㅋ 뛰면 끄고 안 뛰면 켬
                 if (marker_searched.getAnimation() !== null) {
                     marker_searched.setAnimation(null);
                 } else {
@@ -160,6 +161,7 @@ function initMap() {
 // 대부분 위에 검색 후 마커 생성과정과 비슷하다
 function addMarker(latlng, title, map) {
     var hide_flag = 0;
+    var original_latlng = latlng;
     var called = 0;
     var service = new google.maps.places.PlacesService(map);
     var geocoder = new google.maps.Geocoder;
@@ -172,12 +174,40 @@ function addMarker(latlng, title, map) {
         draggable: true
     });
 
-    marker.addListener('rightclick', function (event) {
+    //장바구니에 담기위해 드래그이벤트 걸었슴다
+    marker.addListener('dragend', function () {
+        marker.setPosition(original_latlng);
+        marker.setMap(map);
+        console.log($('#divView').attr('data-on-flag'));
+        if ($('#divView').attr('data-on-flag') === 'true') {
+            var lat = original_latlng.lat();
+            var lng = original_latlng.lng();
+            var mem_id = document.getElementById('mem_id').value;
+            $.ajax({
+                url: 'insertBasket',
+                type: 'POST',
+                data: {
+                    mem_id: mem_id,
+                    boa_latitude: lat,
+                    boa_longitude: lng
+                },
+                success: function (data) {
+                    if (data == 1) {
+                        console.log('장바구니에 담겻당');
+                    }
+                }
+            });
+        }
+    });
+
+    // 마우스 오른쪽 클릭하면 마커가 삭제됨
+    marker.addListener('rightclick', function () {
         marker.setMap(null);
         markers.pop(marker);
     });
 
     marker.addListener('click', function (event) {
+        console.log('클릭됨');
         var latitude = event.latLng.lat();
         var longitude = event.latLng.lng();
         var latlng2 = {lat: latitude, lng: longitude};
@@ -236,6 +266,7 @@ function addMarker(latlng, title, map) {
     markers.push(marker);
 }
 
+//지도 스타일 관련
 var styles = {
     default: null,
     silver: [

@@ -79,7 +79,7 @@
                 },
                 success: function (data) {
                     console.log(data);
-                    if (data == 1) {
+                    if (data >= 1) {
                         console.log('저장성공~!');
                         $('.write-slider').animate({
                             "margin-right": '-=600'

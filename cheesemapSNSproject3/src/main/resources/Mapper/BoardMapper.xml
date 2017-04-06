@@ -31,6 +31,6 @@
 
     <!-- 태그 저장 -->
     <insert id="tagSave" parameterType="BoardTag">
-        INSERT INTO CS_BOARD_TAG (TAG_NAME, BOA_ID) VALUES (#{tag_name}, CS_BOARD_SEQ.nextval-1)
+        INSERT INTO CS_BOARD_TAG (TAG_NAME, BOA_ID) VALUES (#{tag_name}, #{boa_id})
     </insert>
 </mapper>

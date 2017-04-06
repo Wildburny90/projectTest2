@@ -37,13 +37,15 @@ public class BoardController {
         int result2 = 0;
 
         for (String tags : list) {
-            BoardTag tag = new BoardTag(tags, null);
+            BoardTag tag = new BoardTag(tags, board.getBoa_id());
             result2 += dao.tagSave(tag);
         }
 
         System.out.println(result2);
 
-        return result;
+        int result3 = result + result2;
+
+        return result3;
     }
 
     @RequestMapping(value = "boardWrite", method = RequestMethod.GET)

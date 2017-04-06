@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 마이메뉴 처리 SQL -->
+<mapper namespace="com.scmaster.cheesemap.dao.MyMenuMapper">
+
+	<select id="getMyMenu" parameterType="String" resultType="MyMenu">
+		select
+			mem_id
+			, mem_nickname
+			, mem_originalfile
+			, mem_savefile
+			, (select
+					count(fol_following) fol_following
+				from
+					cs_follow
+				where
+					fol_follower = #{mem_id}
+			) fol_following
+			, (select
+					count(fol_follower) fol_following
+				from
+					cs_follow
+				where
+					fol_following = #{mem_id}
+			) fol_follower
+		from
+			cs_member m
+		where
+			mem_id = #{mem_id}
+	</select>
+
+</mapper>

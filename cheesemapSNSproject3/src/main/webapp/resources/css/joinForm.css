@@ -1,0 +1,38 @@
+.coco {
+	font-size: 1.5em !important;
+	font-family: inherit !important;
+	color: #999 !important;
+	margin-top: 3%;
+}
+
+.genderSection gender_sub {
+	padding-left: 0 !important;
+	border: none !important;
+	font-size: 1.5em !important;
+	box-shadow: none !important;
+	width: 100% !important;
+	height: 34px !important;
+	font: inherit !important;
+	float: left;
+}
+
+#gender {
+	margin-right: 10% !important;
+}
+
+.gender_sub {
+	margin-right: 5% !important;
+}
+
+#upload {
+	font: inherit !important;
+	font-size: small !important;
+	width: 200px !important;
+	display: inline !important;
+	vertical-align: bottom !important;
+}
+
+#userPhoto {
+	width: 150px;
+	height: 170px;
+}

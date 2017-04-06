@@ -1,0 +1,31 @@
+/* #input-group{
+	
+	position: fixed !important; 
+	width: 50px;
+	height: 100px;
+	right: 30px;
+	top: 15%;
+	
+} */
+
+.searchClass{
+	
+   position: fixed !important; 
+	width:200px;
+	height: 60px;
+	right: 150px;
+	top: 18%;
+	
+	
+	
+}
+
+.search_input_form{
+	width:200px;
+	height:30px;
+	line-height: 25px;
+	font-size: 19px;
+	opacity: 0.6;	
+}
+
+

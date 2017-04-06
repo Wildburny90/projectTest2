@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.scmaster.cheesemap.dao.BoardMapper">
+
+    <!--게시물 저장 테스트-->
+    <insert id="boardSave" parameterType="Board" useGeneratedKeys="true" keyProperty="boa_id" keyColumn="boa_id">
+        INSERT INTO CS_BOARD
+        (BOA_ID, BOA_CONTENT, BOA_CREATE_DATE, BOA_LATITUDE, BOA_LONGITUDE
+        <if test="boa_photo_originalfile != null and boa_photo_savefile != null">
+            , BOA_PHOTO_ORIGINALFILE, BOA_PHOTO_SAVEFILE
+        </if>
+        <if test="boa_video_originalfile != null and boa_video_savefile != null">
+            , BOA_VIDEO_ORIGINALFILE, BOA_VIDEO_SAVEFILE
+        </if>
+        , MEM_ID)
+        VALUES (CS_BOARD_SEQ.nextval,#{boa_content,jdbcType=CLOB},sysdate,#{boa_latitude},#{boa_longitude}
+        <if test="boa_photo_originalfile != null and boa_photo_savefile != null">
+        ,#{boa_photo_originalfile},#{boa_photo_savefile}
+        </if>
+        <if test="boa_video_originalfile != null and boa_video_savefile != null">
+        ,#{boa_video_originalfile},#{boa_video_savefile}
+        </if>
+        ,#{mem_id})
+        <selectKey keyProperty="boa_id" resultType="String" order="AFTER">
+            SELECT CS_BOARD_SEQ.currval From dual
+        </selectKey>
+    </insert>
+
+    <!-- 태그 저장 -->
+    <insert id="tagSave" parameterType="BoardTag">
+        INSERT INTO CS_BOARD_TAG (TAG_NAME, BOA_ID) VALUES (#{tag_name}, CS_BOARD_SEQ.nextval-1)
+    </insert>
+</mapper>

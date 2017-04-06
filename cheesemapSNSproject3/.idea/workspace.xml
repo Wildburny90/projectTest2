@@ -1087,7 +1087,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1491450176807</updated>
-      <workItem from="1491450178220" duration="15684000" />
+      <workItem from="1491450178220" duration="15713000" />
     </task>
     <task id="LOCAL-00001" summary="dfasdfas">
       <created>1491450318199</created>
@@ -1117,11 +1117,18 @@
       <option name="project" value="LOCAL" />
       <updated>1491472959896</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="바구니바구니장바구닝">
+      <created>1491472965408</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1491472965408</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15684000" />
+    <option name="totallyTimeSpent" value="15713000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />

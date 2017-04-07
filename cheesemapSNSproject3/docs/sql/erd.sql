@@ -95,9 +95,7 @@ CREATE TABLE CS_MYMAP
 CREATE TABLE CS_MYMAP_BASKET
 (
 	MEM_ID varchar2(50) NOT NULL,
-  BOA_LATITUDE varchar2(50) NOT NULL,
-  BOA_LONGITUDE varchar2(50) NOT NULL,
-	PLACE_NAME VARCHAR2(200) NOT NULL
+	BOA_ID varchar2(15) NOT NULL
 );
 
 CREATE TABLE CS_MYMAP_COMMENT
@@ -238,6 +236,10 @@ CREATE SEQUENCE CS_MYMAP_COMMENT_SEQ START WITH 1 INCREMENT BY 1;
 /* test */
 select * from CS_MEMBER;
 select * from CS_FOLLOW;
+select * from CS_BOARD;
+select * from CS_BOARD_COMMENT;
+select * from CS_BOARD_TAG;
+select * from CS_BOARD_LIKE;
 
 select
 	mem_id
@@ -293,3 +295,20 @@ update
 	cs_member
 set
 	mem_check = 1;
+	
+insert into
+	CS_BOARD_LIKE
+values (
+	'jwnamkung@naver.com'
+	, '23'
+);
+
+select
+	tag_name
+	, boa_id
+from
+	CS_BOARD_TAG
+where
+	boa_id = '41'
+order by
+	tag_name;

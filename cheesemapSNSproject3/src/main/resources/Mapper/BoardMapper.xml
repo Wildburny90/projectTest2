@@ -33,4 +33,19 @@
     <insert id="tagSave" parameterType="BoardTag">
         INSERT INTO CS_BOARD_TAG (TAG_NAME, BOA_ID) VALUES (#{tag_name}, #{boa_id})
     </insert>
+
+    <!-- 바구니 저장-->
+    <insert id="saveToBasket" parameterType="String">
+        INSERT INTO CS_MYMAP_BASKET (MEM_ID, BOA_LATITUDE, BOA_LONGITUDE, PLACE_NAME) VALUES (#{0}, #{1}, #{2}, #{3})
+    </insert>
+
+    <!-- 바구니 불러오기-->
+    <select id="getMyBasket" parameterType="String" resultType="MyBasket">
+        SELECT MEM_ID, BOA_LATITUDE, BOA_LONGITUDE, PLACE_NAME FROM CS_MYMAP_BASKET WHERE MEM_ID = #{mem_id}
+    </select>
+
+    <!-- 바구니 삭제-->
+    <delete id="deleteBasketItem" parameterType="String">
+        DELETE FROM CS_MYMAP_BASKET WHERE MEM_ID = #{0} AND PLACE_NAME = #{1}
+    </delete>
 </mapper>

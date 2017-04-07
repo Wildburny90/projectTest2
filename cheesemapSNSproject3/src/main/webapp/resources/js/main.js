@@ -2,6 +2,7 @@ $(function () {
     var flag_my_menu = true;
     var flag_timeline = true;
     var flag_contact = true;
+    var mem_id = document.getElementById('mem_id').value;
 
     //장바구니 버튼 클릭 시 옆에 장바구니 창이 뜹니당
     $('#basket').click(function (e) {
@@ -9,7 +10,7 @@ $(function () {
         var divLeft = '5%';
         var serial = $(this).attr("serial");
         var idx = $(this).attr("idx");
-        $('#divView').empty().append('<div style="position:absolute;top:-4px;right:4px"><span id="close" style="cursor:pointer;font-size:1.5em" title="닫기">X</span> </div>');
+        $('#divView').empty().append('<div style="position:absolute;top:-4px;right:4px"><span id="close" style="cursor:pointer;font-size:1.5em" title="닫기">X</span></div>');
         $('#divView').css({
             "top": divTop
             , "left": divLeft
@@ -18,6 +19,7 @@ $(function () {
         $('#close').click(function () {
             document.getElementById('divView').style.display = 'none'
         });
+        getMyBasket(mem_id);
     });
 
     $('#divView').mouseenter(function (e) {

@@ -89,9 +89,10 @@
 	<header>
 
 		<!-- 장소 검색창 -->
-		 <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+            <input id="pac-input" class="controls" type="text" placeholder="Search Box">
 		<!-- map  -->
-		<div id="map"></div>
+		<div id="map">
+        </div>
 
 		<div id="style-selector-control" class="map-control">
 			<select id="style-selector" class="selector-control">

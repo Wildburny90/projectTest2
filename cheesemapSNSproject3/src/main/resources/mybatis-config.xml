@@ -9,6 +9,7 @@
 		<typeAlias type="com.scmaster.cheesemap.vo.MyMenu" alias="MyMenu" />
 		<typeAlias type="com.scmaster.cheesemap.vo.Board" alias="Board" />
 		<typeAlias type="com.scmaster.cheesemap.vo.BoardTag" alias="BoardTag"/>
+		<typeAlias type="com.scmaster.cheesemap.vo.MyBasket" alias="MyBasket"/>
 	</typeAliases>
 
 	<mappers>

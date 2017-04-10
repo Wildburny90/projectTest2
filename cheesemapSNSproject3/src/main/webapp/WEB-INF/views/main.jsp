@@ -113,8 +113,8 @@
             <img src="./resources/img/pencil.png"/>
 		</div>
 		<!-- 장바구니 버튼-->
-        <div id="divView"></div>
-		<div id="basket">
+		<div id="divView"></div>
+		<div id="basket" data-toggle="false">
 			<img src="./resources/img/cart.png" style="height: 50px; width: auto"/>
 		</div>
 
@@ -281,7 +281,7 @@
 
 	<!-- map JavaScript -->
 	<script	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApHkc_70xfMcN5SF0_8T6uNpspm-GXyDo&callback=initMap&libraries=places" async defer></script>
-		<script src="./resources/js/map.js"></script>
+	<script src="./resources/js/map.js"></script>
 
 	<!-- Login JavaScript -->
 	<script src="./resources/js/login.js"></script>

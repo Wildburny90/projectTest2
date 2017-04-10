@@ -1,4 +1,5 @@
 var markers = [];
+var overlay;
 
 function initMap() {
 
@@ -95,6 +96,7 @@ function deleteBasketItem(place_name) {
         },
         success: function (data) {
             console.log('삭제하고왓숨둥');
+            getMyBasket(mem_id);
         },
         error: function (e) {
             console.log(e);
@@ -102,7 +104,7 @@ function deleteBasketItem(place_name) {
     });
 }
 
-
+//나의 바스켓 정보 가져오기
 function getMyBasket(mem_id) {
     $.ajax({
         url: 'getMyBasket',
@@ -113,11 +115,17 @@ function getMyBasket(mem_id) {
         success: function (data) {
             console.log('잘 다녀왔습니당');
             var html = '';
-            data.forEach(function (item, index) {
-                html += '어디: ' + item.place_name + '위치정보: ' + item.boa_latitude + '  ' + item.boa_longitude + '<br>';
-                html += '<div><span id="deleteBasketItem" style="cursor:pointer;font-size:1em" title="닫기" ' + 'onclick="' + 'deleteBasketItem(' + '\'' + item.place_name + '\'' + ')"' + '>X</span></div>';
-            });
+            html += '<div style="position:absolute;top:-4px;right:4px"><span id="close" style="cursor:pointer;font-size:1.5em" title="닫기">X</span></div>';
+            if (data != null) {
+                data.forEach(function (item, index) {
+                    html += '어디: ' + item.place_name + '위치정보: ' + item.boa_latitude + '  ' + item.boa_longitude + '<br>';
+                    html += '<div><span id="deleteBasketItem" style="cursor:pointer;font-size:1em" title="닫기" ' + 'onclick="' + 'deleteBasketItem(' + '\'' + item.place_name + '\'' + ')"' + '>X</span></div>';
+                });
+            }
             $('#divView').html(html);
+            $('#close').click(function () {
+                document.getElementById('divView').style.display = 'none'
+            });
         },
         error: function (e) {
             console.log(e);
@@ -144,6 +152,8 @@ function insertBasket(original_latlng, place_name) {
             if (data == 1) {
                 console.log('바구니에 넣엇당');
                 getMyBasket(mem_id);
+                $('#divView').attr('data-drag', 'false');
+                $('#divView').css('cursor', '');
             }
         },
         error: function (e) {
@@ -191,8 +201,13 @@ function addMarker(latlng, title, map) {
     });
     infowindow.open(map, marker);
 
+    marker.addListener('drag', function () {
+        $('#divView').attr('data-drag', 'true');
+    });
+
     //장바구니에 담기위해 드래그이벤트 걸었슴다
     marker.addListener('dragend', function () {
+        $('#divView').attr('data-drag', 'false');
         marker.setPosition(original_latlng);
         marker.setMap(map);
         console.log($('#divView').attr('data-on-flag'));
